@@ -6,7 +6,7 @@ import { Model } from "./repository.model";
   templateUrl: "template.html",
 })
 
-export class ProductComponent {
+export class CurseComponent {
   model: Model = new Model();
 
 

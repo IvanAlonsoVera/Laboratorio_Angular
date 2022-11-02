@@ -1,19 +1,18 @@
-import { Product } from "./product.model";
+import { Curse } from "./curse.model";
 
 export class SimpleDataSource {
-  private data: Product[];
+  private data: Curse[];
 
   constructor() {
-    this.data = new Array<Product>(
-      new Product(1, "kayak", "WaterSport", 275),
-      new Product(2, "lifejacket", "WaterSport", 48.95),
-      new Product(3, "Soccer Ball", "Soccer", 18.95),
-      new Product(4, "Corner Flags", "Soccer", 34.95),
-      new Product(1, "Thinking Cap", "Chess", 16)
+    this.data = new Array<Curse>(
+      new Curse(1, "Agile", 20, "JohnJones"),
+      new Curse(2, "C#", 15, "JohnJones"),
+      new Curse(3, "Angular", 13, "RossMiller"),
+      new Curse(4, "Java", 10, "AlexWalker"),
     )
   }
 
-  getData(): Product[] {
+  getData(): Curse[] {
     return this.data;
   }
 

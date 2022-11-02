@@ -1,47 +1,47 @@
-import { Product } from "./product.model";
+import { Curse } from "./curse.model";
 import { SimpleDataSource } from "./datasource.model";
 
 export class Model {
   private dataSource: SimpleDataSource;
-  private products: Product[];
-  private locator= (p: Product, id: number) => p.id == id;
+  private curses: Curse[];
+  private locator= (p: Curse, id: number) => p.id == id;
 
   constructor(){
     this.dataSource = new SimpleDataSource();
-    this.products = new Array<Product>();
-    this.dataSource.getData().forEach(p => this.products.push(p));
+    this.curses = new Array<Curse>();
+    this.dataSource.getData().forEach(p => this.curses.push(p));
   }
 
-  getProducts(): Product[]{
-    return this.products;
+  getCurses(): Curse[]{
+    return this.curses;
   }
 
-  getProduct(id: number): any {
-    return this.products.find(p=>this.locator(p,id))
+  getCurse(id: number): any {
+    return this.curses.find(p=>this.locator(p,id))
   }
 
-  saveProduct(product: any) {
+  saveCurse(product: any) {
     if (product.id == 0 || product.id == null) {
       product.id = this.generateID();
-      this.products.push(product);
+      this.curses.push(product);
     } else {
-      let index = this.products.findIndex(p => this.locator(p, product.id));
-      this.products.splice(index, 1, product);
+      let index = this.curses.findIndex(p => this.locator(p, product.id));
+      this.curses.splice(index, 1, product);
     }
   }
 
   private generateID(): number {
     let candidate = 100;
-    while (this.getProduct(candidate) != null) {
+    while (this.getCurse(candidate) != null) {
       candidate++;
     }
     return candidate;
   }
 
-  deleteProduct(id: number) {
-    let index = this.products.findIndex(p => this.locator(p, id));
+  deleteCurse(id: number) {
+    let index = this.curses.findIndex(p => this.locator(p, id));
     if (index > -1) {
-      this.products.splice(index, 1);
+      this.curses.splice(index, 1);
     }
   }
 }

@@ -12,15 +12,15 @@ export class Model {
     this.dataSource.getData().forEach(p => this.curses.push(p));
   }
 
-  getProducts(): Curse[]{
+  getCurses(): Curse[]{
     return this.curses;
   }
 
-  getProduct(id: number): any {
+  getCurse(id: number): any {
     return this.curses.find(p=>this.locator(p,id))
   }
 
-  saveProduct(product: any) {
+  saveCurse(product: any) {
     if (product.id == 0 || product.id == null) {
       product.id = this.generateID();
       this.curses.push(product);
@@ -32,13 +32,13 @@ export class Model {
 
   private generateID(): number {
     let candidate = 100;
-    while (this.getProduct(candidate) != null) {
+    while (this.getCurse(candidate) != null) {
       candidate++;
     }
     return candidate;
   }
 
-  deleteProduct(id: number) {
+  deleteCurse(id: number) {
     let index = this.curses.findIndex(p => this.locator(p, id));
     if (index > -1) {
       this.curses.splice(index, 1);

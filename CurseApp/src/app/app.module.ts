@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { CurseComponent } from './component';
+import { CurseComponent } from './Curse/component';
 
 @NgModule({
   declarations: [

@@ -4,13 +4,19 @@ import { NgModule } from '@angular/core';
 
 import { ProductComponent } from "./product/component";
 
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+
+import { PaAttrDirective } from "./directives/attr.directive";
+
+import { PaModel } from "./directives/twoway.directive";
+
+
 
 @NgModule({
 
-  declarations: [ProductComponent],
+  declarations: [ProductComponent, PaAttrDirective, PaModel],
 
-  imports: [BrowserModule, FormsModule],
+  imports: [BrowserModule, FormsModule, ReactiveFormsModule],
 
   providers: [],
 
@@ -18,4 +24,5 @@ import { FormsModule } from "@angular/forms";
 
 })
 
-export class AppModule { } 
+export class AppModule { }
+

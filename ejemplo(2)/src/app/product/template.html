@@ -11,69 +11,80 @@
   }
 </style>
 
-<div class="m-2">
+<div class="row m-2">
 
-  <form novalidate #form="ngForm" (ngSubmit)="submitForm(form)">
+  <div class="col-6">
 
-    <div class="bg-danger text-white p-2 mb-2" *ngIf="formSubmitted && form.invalid">
+    <form novalidate #form="ngForm" (ngSubmit)="submitForm(form)">
 
-      There are problems whith the form
+      <div class="bg-danger text-white p-2 mb-2" *ngIf="formSubmitted && form.invalid">
 
-    </div>
+        There are problems whith the form
 
-    <div class="form-group">
+        <ul>
 
-      <label>Product Name</label>
+          <li *ngFor="let error of getFormValidationMessages(form)">{{error}}</li>
 
-      <input class="form-control"
-             name="name"
-             [(ngModel)]="newProduct.name"
-             #name="ngModel"
-             required
-             minlength="5"
-             pattern="^[A-Za-z ]+$" />
+        </ul>
 
-      <ul class="text-danger list-unstyled" *ngIf=" (formSubmitted || name.dirty) && name.invalid">
+      </div>
 
-        <li *ngFor="let error of getValidationMessages(name)">{{error}}</li>
+      <div class="form-group">
 
-      </ul>
+        <label>Product Name</label>
 
-    </div>
+        <input class="form-control"
+               name="name"
+               [(ngModel)]="newProduct.name"
+               #name="ngModel"
+               required
+               minlength="5"
+               pattern="^[A-Za-z ]+$" />
+        <ul class="text-danger list-unstyled" *ngIf=" (formSubmitted || name.dirty) && name.invalid">
+          <li *ngFor="let error of getValidationMessages(name)">{{error}}</li>
+        </ul>
+      </div>
+      <div class="form-group">
+        <label>Category</label>
+        <input class="form-control"
+               name="category"
+               [(ngModel)]="newProduct.category"
+               #category="ngModel"
+               minlength="5"
+               required pattern="^[A-Za-z ]+$" />
+        <ul class="text-danger list-unstyled" *ngIf=" (formSubmitted || category.dirty) && category.invalid">
+          <li *ngFor="let error of getValidationMessages(category)">{{error}}</li>
+        </ul>
+      </div>
+      <div class="form-group">
+        <label>Price</label>
+        <input class="form-control" name="price" [(ngModel)]="newProduct.price" #price="ngModel"
+               required pattern="^[0-9\.]+$" />
+        <ul class="text-danger list-unstyled" *ngIf=" (formSubmitted || price.dirty) && price.invalid">
+          <li *ngFor="let error of getValidationMessages(price)">{{error}}</li>
+        </ul>
+      </div>
+      <button class="btn btn-primary" type="submit"
+              [disabled]="formSubmitted && form.invalid"
+              [class.btn-secondary]="formSubmitted && form.invalid">
+        Create
+      </button>
+    </form>
+  </div>
 
-
-
-    <div class="form-group">
-
-      <label>Price</label>
-
-      <input class="form-control"
-             name="price"
-             [(ngModel)]="newProduct.price"
-             #price="ngModel"
-             required
-             pattern="^[0-9\.]+$" />
-
-      <ul class="text-danger list-unstyled" *ngIf=" (formSubmitted || price.dirty) && price.invalid">
-
-        <li *ngFor="let error of getValidationMessages(price)">{{error}}</li>
-
-      </ul>
-
-    </div>
-
-
-
-    <button class="btn btn-primary" type="submit"
-            [disabled]="formSubmitted && form.invalid"
-            [class.btn-secondary]="formSubmitted && form.invalid">
-
-      Create
-
-    </button>
-
-  </form>
+  <div class="col-6">
+    <table class="table table-sm table-bordered table-striped" pa-attr>
+      <tr><th></th><th>Name</th><th>Category</th><th>Price</th></tr>
+      <tr *ngFor="let item of getProducts();
+          let i = index" [pa-attr]="getProducts().length < 6 ? 'bg-success': 'bg-warning'"
+          [pa-product]="item" (pa-category)="newProduct.category=$event">
+        <td>{{i + 1}}</td>
+        <td>{{item.name}}</td>
+        <td [pa-attr]="item.category=='Soccer'?'bg-info':null">{{item.category}}</td>
+        <td [pa-attr]="'bg-info'">{{item.price}}</td>
+      </tr>
+    </table>
+  </div>
 
 </div>
-
 

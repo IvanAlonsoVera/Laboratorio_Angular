@@ -1,11 +1,14 @@
 {
   "ExpandedNodes": [
     "",
-    "\\CurseApp",
     "\\CurseApp\\src",
-    "\\ejemplo",
-    "\\ejemplo\\src\\app"
+    "\\CurseApp\\src\\app",
+    "\\CurseApp\\src\\app\\Curse",
+    "\\ejemplo(2)",
+    "\\ejemplo(2)\\src",
+    "\\ejemplo(2)\\src\\app",
+    "\\ejemplo(2)\\src\\app\\product"
   ],
-  "SelectedNode": "\\CurseApp\\src\\repository.model.ts",
+  "SelectedNode": "\\ejemplo(2)\\src\\app\\product\\datasource.model.ts",
   "PreviewInSolutionExplorer": false
 }

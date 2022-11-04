@@ -1,6 +1,6 @@
 import {
   Directive, ElementRef, Attribute,
-  Input, SimpleChange, Output, EventEmitter
+  Input, SimpleChange, Output, EventEmitter, HostBinding, HostListener
 } from "@angular/core";
 import { Product } from "../product/product.model";
 
@@ -9,35 +9,27 @@ import { Product } from "../product/product.model";
 })
 
 export class PaAttrDirective {
-  constructor(private element: ElementRef) {
-    this.element.nativeElement.addEventListener("click", () => {
-      if (this.product != null) {
-        this.click.emit(this.product.category);
-      }
-    });
-  }
 
   @Input("pa-attr")
-
+    //enlaza como si fuese un puente de union
+  @HostBinding("class")
   bgClass: any;
 
   @Input("pa-product")
-
   product?: Product;
 
-
-
+  //crea un emisor onclick para el pa-category
   @Output("pa-category")
   click = new EventEmitter<string>();
 
-  ngOnChanges(changes: { [property: string]: SimpleChange }) {
-    let change = changes["bgClass"];
-    let classList = this.element.nativeElement.classList;
-    if (!change.isFirstChange() && classList.contains(change.previousValue)) {
-      classList.remove(change.previousValue);
-    }
-    if (!classList.contains(change.currentValue)) {
-      classList.add(change.currentValue);
+  //coje el click de arriba y manda el product category
+  @HostListener("click")
+  tiggerCustomEvent() {
+    if (this.product != null) {
+      this.click.emit(this.product.category);
     }
   }
+
+  
+
 } 

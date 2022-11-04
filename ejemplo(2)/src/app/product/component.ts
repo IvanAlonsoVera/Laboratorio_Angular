@@ -14,7 +14,7 @@ export class ProductComponent {
     return this.model.getProduct(key);
   }
 
-
+  showTable: boolean = true;
 
   getProducts(): Product[] {
     return this.model.getProducts();

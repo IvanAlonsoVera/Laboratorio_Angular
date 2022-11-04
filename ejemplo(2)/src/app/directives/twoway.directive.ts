@@ -9,7 +9,9 @@ import {
 })
 
 export class PaModel {
+  //nos traemos datos para el product.name
   @Input("paModel")
+    //model property es lo que recibe del template
   modelProperty: string | undefined;
   @HostBinding("value")
   fieldValue: string = "";
@@ -19,6 +21,7 @@ export class PaModel {
       this.fieldValue = changes["modelProperty"].currentValue || "";
     }
   }
+  //con esto lo llevamos al imput del formulario
   @Output("paModelChange")
   update = new EventEmitter<string>();
   @HostListener("input", ["$event.target.value"])

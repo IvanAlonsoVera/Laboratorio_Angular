@@ -1,4 +1,8 @@
-import { Component } from "@angular/core";
+import { Component, Input } from "@angular/core";
+
+import { Model } from "./repository.model";
+
+import { Product } from "./product.model";
 
 
 
@@ -10,5 +14,40 @@ import { Component } from "@angular/core";
 
 })
 
-export class ProductTableComponent { }
 
+
+export class ProductTableComponent {
+
+  @Input("model")
+
+  dataModel: any;;
+
+
+
+  getProduct(key: number): Product {
+
+    return this.dataModel.getProduct(key);
+
+  }
+
+
+
+  getProducts(): Product[] {
+
+    return this.dataModel.getProducts();
+
+  }
+
+
+
+  deleteProduct(key: number) {
+
+    this.dataModel.deleteProduct(key);
+
+  }
+
+
+
+  showTable: boolean = true;
+
+} 

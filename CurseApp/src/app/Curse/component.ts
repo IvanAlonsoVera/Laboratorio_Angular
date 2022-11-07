@@ -17,10 +17,10 @@ export class CurseComponent {
   }
 
   getClasses(key: number): string {
-      if (this.model.getCurse(key).seatCapacity <= 17) {
-        return "bg-warning"
+      if (this.model.getCurse(key).id%2 == 1) {
+        return "bg-light"
       } else {
-        return "bg-success"
+        return "bg-white"
       }
   } 
   selectedCurse: string | undefined;

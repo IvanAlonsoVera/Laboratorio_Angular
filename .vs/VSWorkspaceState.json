@@ -1,14 +1,10 @@
 {
   "ExpandedNodes": [
     "",
+    "\\CurseApp",
     "\\CurseApp\\src",
     "\\CurseApp\\src\\app",
-    "\\CurseApp\\src\\app\\Curse",
-    "\\ejemplo(2)\\src",
-    "\\ejemplo(2)\\src\\app",
-    "\\ejemplo(2)\\src\\app\\directives",
-    "\\ejemplo(2)\\src\\app\\product"
+    "\\CurseApp\\src\\app\\Curse"
   ],
-  "SelectedNode": "\\ejemplo(2)",
   "PreviewInSolutionExplorer": false
 }

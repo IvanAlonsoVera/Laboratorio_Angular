@@ -1,7 +1,7 @@
 export class Curse {
   constructor(
     public id?: number,
-    public tittle?: string,
+    public title?: string,
     public seatCapacity?: number,
     public instructorName?: string
   ) { }
